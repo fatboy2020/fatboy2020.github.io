@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fatboy2020.github.io</id>
     <title>学习过程</title>
-    <updated>2020-03-15T14:40:32.460Z</updated>
+    <updated>2020-03-15T14:41:58.856Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fatboy2020.github.io"/>
     <link rel="self" href="https://fatboy2020.github.io/atom.xml"/>
@@ -17,11 +17,11 @@
         </link>
         <updated>2020-03-15T10:03:56.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="简介">简介</h2>
-<p>宝塔面板是一个小白建站神器，但是他的作用远远不至于建站，写一下怎么用宝塔面板使用v2ray的websocket再套CDN。<br>
+<p>宝塔面板是一个小白建站神器，但是它的作用远远不止建站，写一下怎么用宝塔面板使用v2ray的websocket再套CDN。<br>
 宝塔面板的安装直接再网上搜索就可以了，很简单这里就不赘述了。我们直接进入正题</p>
 ]]></summary>
         <content type="html"><![CDATA[<h2 id="简介">简介</h2>
-<p>宝塔面板是一个小白建站神器，但是他的作用远远不至于建站，写一下怎么用宝塔面板使用v2ray的websocket再套CDN。<br>
+<p>宝塔面板是一个小白建站神器，但是它的作用远远不止建站，写一下怎么用宝塔面板使用v2ray的websocket再套CDN。<br>
 宝塔面板的安装直接再网上搜索就可以了，很简单这里就不赘述了。我们直接进入正题</p>
 <!-- more -->
 <h2 id="安装v2ray">安装v2ray</h2>
