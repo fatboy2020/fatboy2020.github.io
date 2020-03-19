@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>宝塔面板+v2ray+ws+tls+cdn | 学习过程</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://fatboy2020.github.io/favicon.ico?v=1584597135978">
+<link rel="stylesheet" href="https://fatboy2020.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="简介
+宝塔面板是一个小白建站神器，但是它的作用远远不止建站，写一下怎么用宝塔面板使用v2ray的websocket再套CDN。
+宝塔面板的安装直接再网上搜索就可以了，很简单这里就不赘述了。我们直接进入正题
+
+安装v2ray
+这里使用v2ra..." />
+    <meta name="keywords" content="宝塔面板相关教程" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://fatboy2020.github.io">
+        <img src="https://fatboy2020.github.io/images/avatar.png?v=1584597135978" class="site-logo">
+        <h1 class="site-title">学习过程</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      希望自己能坚持
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://fatboy2020.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">宝塔面板+v2ray+ws+tls+cdn</h2>
+            <div class="post-date">2020-03-15</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="简介">简介</h2>
+<p>宝塔面板是一个小白建站神器，但是它的作用远远不止建站，写一下怎么用宝塔面板使用v2ray的websocket再套CDN。<br>
+宝塔面板的安装直接再网上搜索就可以了，很简单这里就不赘述了。我们直接进入正题</p>
+<!-- more -->
+<h2 id="安装v2ray">安装v2ray</h2>
+<p>这里使用v2ray的官方脚本:</p>
+<p><code>V2ray官方脚本 bash &lt;(curl -L -s https://install.direct/go.sh)</code><br>
+安装完成后会显示端口和uuid  记住它们。<br>
+然后在宝塔面板的安全里放开该端口如果是阿里云之类的还要在安全组里面放开。</p>
+<h2 id="新建一个网站并配置">新建一个网站并配置</h2>
+<p>打开宝塔面板的控制网页再网站菜单下新建一个网站<br>
+<img src="https://fatboy2020.github.io/post-images/1584267472665.png" alt="" loading="lazy"><br>
+这里不用新建FTP以及数据库，绑定的域名需要提前解析到vps的IP 不然后面申请SSL证书不好申请，或者你的域名之前已经有证书了直接粘贴就可以了，接下来打开点击你新建的网站域名会打开配置界面再打开SSL选项申请证书选择Let's encrypt 获取证书。<br>
+<img src="https://fatboy2020.github.io/post-images/1584267733284.png" alt="" loading="lazy"><br>
+自己有证书在其他证书那里粘贴自己的证书。<br>
+接着打开配置文件拉到ssl end 那里 把这个粘贴到那里保存。<br>
+<img src="https://fatboy2020.github.io/post-images/1584267843671.png" alt="" loading="lazy"></p>
+<pre><code class="language-c">          location /cc   //自己选择一个路径不改也没事记得后面v2ray那里修改（记得删除该注释）
+             {
+        proxy_pass http://127.0.0.1:你的端口号; //刚才记的端口号（还是删除）
+        proxy_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &quot;upgrade&quot;;
+        proxy_set_header Host $http_host;
+        proxy_read_timeout 300s;
+    
+      }
+</code></pre>
+<h2 id="配置v2ray">配置v2ray</h2>
+<p>进入v2ray的配置路径 <code>cd /etc/v2ray</code> 打开 config.json<br>
+把里面所有内容删除之后粘贴一下内容：</p>
+<pre><code class="language-c">{
+  &quot;policy&quot;: {
+    &quot;levels&quot;: {
+      &quot;0&quot;: {
+        &quot;uplinkOnly&quot;: 0,
+        &quot;downlinkOnly&quot;: 0,
+        &quot;connIdle&quot;: 150,
+        &quot;handshake&quot;: 4
+      }
+    }
+  },
+  &quot;inbound&quot;: {
+    &quot;listen&quot;: &quot;127.0.0.1&quot;,
+    &quot;port&quot;: 31914,    //这里填写你的 v2ray 端口号，复制脚本请产出这句注释
+    &quot;protocol&quot;: &quot;vmess&quot;,
+    &quot;settings&quot;: {
+      &quot;clients&quot;: [
+        {
+          &quot;id&quot;: &quot;xxxxxxxxxx&quot;,    //这里填写你的 v2ray UUID，复制脚本请删除这句注释
+          &quot;level&quot;: 1,
+          &quot;alterId&quot;: 32
+        }
+      ]
+    },
+    &quot;streamSettings&quot;: {
+      &quot;network&quot;: &quot;ws&quot;,
+      &quot;security&quot;: &quot;auto&quot;,
+      &quot;wsSettings&quot;: {
+        &quot;path&quot;: &quot;/cc&quot;,   //这里填是你自己 ws 的 path,如果修改配置文件的时候没有修改过就不管，复制脚本请删除这句注释
+        &quot;headers&quot;: {
+          &quot;Host&quot;: &quot;www.xxx.com&quot;  //这里填写你的域名，复制脚本请删除这句注释
+        }
+      }
+    }
+  },
+  &quot;outbound&quot;: {
+    &quot;protocol&quot;: &quot;freedom&quot;,
+    &quot;settings&quot;: { }
+  },
+  &quot;outboundDetour&quot;: [
+    {
+      &quot;protocol&quot;: &quot;blackhole&quot;,
+      &quot;settings&quot;: { },
+      &quot;tag&quot;: &quot;blocked&quot;
+    }
+  ],
+  &quot;routing&quot;: {
+    &quot;strategy&quot;: &quot;rules&quot;,
+    &quot;settings&quot;: {
+      &quot;rules&quot;: [
+        {
+          &quot;type&quot;: &quot;field&quot;,
+          &quot;ip&quot;: [
+            &quot;0.0.0.0/8&quot;,
+            &quot;10.0.0.0/8&quot;,
+            &quot;100.64.0.0/10&quot;,
+            &quot;127.0.0.0/8&quot;,
+            &quot;169.254.0.0/16&quot;,
+            &quot;172.16.0.0/12&quot;,
+            &quot;192.0.0.0/24&quot;,
+            &quot;192.0.2.0/24&quot;,
+            &quot;192.168.0.0/16&quot;,
+            &quot;198.18.0.0/15&quot;,
+            &quot;198.51.100.0/24&quot;,
+            &quot;203.0.113.0/24&quot;,
+            &quot;::1/128&quot;,
+            &quot;fc00::/7&quot;,
+            &quot;fe80::/10&quot;
+          ],
+          &quot;outboundTag&quot;: &quot;blocked&quot;
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<p>启动v2ray：<code>systemctl start v2ray</code></p>
+<h2 id="配置cdn">配置CDN</h2>
+<p>用cloudfare partener来配置<br>
+打开官网:  <a href="https://cdn.moeelf.com/">萌精灵</a><br>
+在这之前要申请一个cloudfare账号 <a href="https://cloudfare.com">官网</a><br>
+选择添加域名 ：<br>
+<img src="https://fatboy2020.github.io/post-images/1584282202393.png" alt="" loading="lazy"><br>
+添加完之后选择管理DNS,打开后添加记录就是你要使用的域名可以用二级域名。添加时记得选择勾上那个黄色云朵，这是开启DNS 云朵变灰是关闭。由于是国外的dns所以速度会比较慢，建议在敏感时期开启就可以。<br>
+之后到你的域名服务商那里添加一个CNAME记录。这个记录就是你添加完记录之后自动会给出的一个，长这样     <img src="https://fatboy2020.github.io/post-images/1584282583159.png" alt="" loading="lazy"><br>
+然后进入这个网站<a href="https://www.cloudflare.com/zh-cn/ips/">https://www.cloudflare.com/zh-cn/ips/</a><br>
+选择比较好的节点添加A记录 记录值就是你选择的IP.<br>
+这样就可以使用了</p>
+<h2 id="客户端配置">客户端配置</h2>
+<figure data-type="image" tabindex="1"><img src="https://fatboy2020.github.io/post-images/1584283409781.png" alt="" loading="lazy"></figure>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://fatboy2020.github.io/btpanle/" class="tag">
+                    宝塔面板相关教程
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://fatboy2020.github.io/github-jian-dan-shi-yong-jiao-cheng/">
+                  <h3 class="post-title">
+                    github简单使用教程
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '73012313a3eb9500b2d7',
+        clientSecret: '03dac25f6251ca31d37881040ced1ca560687688',
+        repo: 'fatboy2020.github.io',
+        owner: 'fatboy2020',
+        admin: ['fatboy2020'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
