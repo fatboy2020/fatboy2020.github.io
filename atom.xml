@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://fatboy2020.github.io</id>
     <title>学习过程</title>
-    <updated>2020-03-19T06:58:05.214Z</updated>
+    <updated>2020-03-19T07:23:39.489Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://fatboy2020.github.io"/>
     <link rel="self" href="https://fatboy2020.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://fatboy2020.github.io/images/avatar.png</logo>
     <icon>https://fatboy2020.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 学习过程</rights>
+    <entry>
+        <title type="html"><![CDATA[怎么免费下载英文文献并翻译  ]]></title>
+        <id>https://fatboy2020.github.io/jiao-ni-zen-me-mian-fei-xia-zai-ying-wen-wen-xian-bing-fan-yi/</id>
+        <link href="https://fatboy2020.github.io/jiao-ni-zen-me-mian-fei-xia-zai-ying-wen-wen-xian-bing-fan-yi/">
+        </link>
+        <updated>2020-03-18T13:37:15.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[宝塔面板+v2ray+ws+tls+cdn]]></title>
         <id>https://fatboy2020.github.io/bao-ta-mian-ban-v2raywstlscdn/</id>
