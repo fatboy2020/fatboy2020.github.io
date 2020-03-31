@@ -82,7 +82,7 @@
       <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
         <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
           <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1585145330191" action="/search/index.html" class="search-form" _lpchecked="1">
+            <form id="gridea-search-form" data-update="1585635546925" action="/search/index.html" class="search-form" _lpchecked="1">
               <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
               <button type="submit" class="submit" aria-label="Submit">
                 <i class="fa fa-search-line"></i>
@@ -95,9 +95,9 @@
       <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
 
         <div class="center content">
-          <div class="featured-image cover" style="background-image: url('https://fatboy2020.github.io/post-images/bt-panel+v2ray.jpeg');">
+          <div class="featured-image cover" style="background-image: url('https://cdn.jsdelivr.net/gh/fatboy2020/img/images/v2ray.jpeg');">
             <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2020-03-15"><i class="fa fa-calendar"></i><span class="lately">10 天前</span></time>
+              <time class="meta-info" style="float:left;" datetime="2020-03-15"><i class="fa fa-calendar"></i><span class="lately">16 天前</span></time>
               
               <a href="https://fatboy2020.github.io/bt-panel+v2ray/#comments" class="comments meta-info" title="">
                 <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/bt-panel+v2ray/"> </span>
@@ -132,12 +132,12 @@
 然后在宝塔面板的安全里放开该端口如果是阿里云之类的还要在安全组里面放开。</p>
 <h2 id="新建一个网站并配置">新建一个网站并配置</h2>
 <p>打开宝塔面板的控制网页再网站菜单下新建一个网站<br>
-<img src="https://fatboy2020.github.io/post-images/1584267472665.png" alt="" loading="lazy"><br>
+<img src="https://cdn.jsdelivr.net/gh/fatboy2020/img/images/%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E5%BB%BA%E7%BD%91%E7%AB%99.png" alt="" loading="lazy"><br>
 这里不用新建FTP以及数据库，绑定的域名需要提前解析到vps的IP 不然后面申请SSL证书不好申请，或者你的域名之前已经有证书了直接粘贴就可以了，接下来打开点击你新建的网站域名会打开配置界面再打开SSL选项申请证书选择Let's encrypt 获取证书。<br>
-<img src="https://fatboy2020.github.io/post-images/1584267733284.png" alt="" loading="lazy"><br>
+<img src="https://cdn.jsdelivr.net/gh/fatboy2020/img/images/ssl.png" alt="" loading="lazy"><br>
 自己有证书在其他证书那里粘贴自己的证书。<br>
 接着打开配置文件拉到ssl end 那里 把这个粘贴到那里保存。<br>
-<img src="https://fatboy2020.github.io/post-images/1584267843671.png" alt="" loading="lazy"></p>
+<img src="https://cdn.jsdelivr.net/gh/fatboy2020/img/images/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" alt="" loading="lazy"></p>
 <pre><code class="language-c">          location /cc   //自己选择一个路径不改也没事记得后面v2ray那里修改（记得删除该注释）
              {
         proxy_pass http://127.0.0.1:你的端口号; //刚才记的端口号（还是删除）
@@ -235,14 +235,14 @@
 打开官网:  <a href="https://cdn.moeelf.com/">萌精灵</a><br>
 在这之前要申请一个cloudfare账号 <a href="https://cloudfare.com">官网</a><br>
 选择添加域名 ：<br>
-<img src="https://fatboy2020.github.io/post-images/1584282202393.png" alt="" loading="lazy"><br>
+<img src="https://cdn.jsdelivr.net/gh/fatboy2020/img/images/%E5%9F%9F%E5%90%8D.png" alt="" loading="lazy"><br>
 添加完之后选择管理DNS,打开后添加记录就是你要使用的域名可以用二级域名。添加时记得选择勾上那个黄色云朵，这是开启DNS 云朵变灰是关闭。由于是国外的dns所以速度会比较慢，建议在敏感时期开启就可以。<br>
-之后到你的域名服务商那里添加一个CNAME记录。这个记录就是你添加完记录之后自动会给出的一个，长这样     <img src="https://fatboy2020.github.io/post-images/1584282583159.png" alt="" loading="lazy"><br>
+之后到你的域名服务商那里添加一个CNAME记录。这个记录就是你添加完记录之后自动会给出的一个，长这样     <img src="https://cdn.jsdelivr.net/gh/fatboy2020/img/images/cname.png" alt="" loading="lazy"><br>
 然后进入这个网站<a href="https://www.cloudflare.com/zh-cn/ips/">https://www.cloudflare.com/zh-cn/ips/</a><br>
 选择比较好的节点添加A记录 记录值就是你选择的IP.<br>
 这样就可以使用了</p>
 <h2 id="客户端配置">客户端配置</h2>
-<figure data-type="image" tabindex="1"><img src="https://fatboy2020.github.io/post-images/1584283409781.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/fatboy2020/img/images/v2raykehuduan.png" alt="" loading="lazy"></figure>
 
                 </div>
                 <div class="clear"></div>
@@ -253,7 +253,7 @@
             <section class="related section">
               
               <article class="prev grid-50 tablet-grid-50 grid-parent">
-                <div class="thumb cover lazy loaded" style="background-image: url('https://fatboy2020.github.io/post-images/englisgpaperdownload.jpg');"></div>
+                <div class="thumb cover lazy loaded" style="background-image: url('https://cdn.jsdelivr.net/gh/fatboy2020/img/images/图标.jpg');"></div>
                  <a href="https://fatboy2020.github.io/englisgpaperdownload/" class="full-link"></a>
                  <div class="info">
                   <time datetime="2020-03-18">2020-03-18</time>
@@ -267,7 +267,7 @@
               
               
               <article class="next grid-50 tablet-grid-50 grid-parent">
-                <div class="thumb cover lazy loaded" style="background-image: url('https://fatboy2020.github.io/post-images/github-jian-dan-shi-yong-jiao-cheng.jpeg');"></div>
+                <div class="thumb cover lazy loaded" style="background-image: url('https://cdn.jsdelivr.net/gh/fatboy2020/img/images/ggg.jpeg');"></div>
                  <a href="https://fatboy2020.github.io/github-jian-dan-shi-yong-jiao-cheng/" class="full-link"></a>
                  <div class="info">
                   <time datetime="2020-03-14">2020-03-14</time>
@@ -342,7 +342,7 @@
                   
                   <article class="item post-1 post type-post status-publish format-standard has-post-thumbnail hentry">
                     <a href="https://fatboy2020.github.io/englisgpaperdownload/" class="thumb hover-effect">
-                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('https://fatboy2020.github.io/post-images/englisgpaperdownload.jpg');"></span>
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('https://cdn.jsdelivr.net/gh/fatboy2020/img/images/图标.jpg');"></span>
                     </a>
                     <div class="info gradient-effect">
                       <time datetime="2020-03-18">2020-03-18</time>
@@ -357,7 +357,7 @@
                   
                   <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
                     <a href="https://fatboy2020.github.io/bt-panel+v2ray/" class="thumb hover-effect">
-                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('https://fatboy2020.github.io/post-images/bt-panel+v2ray.jpeg');"></span>
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('https://cdn.jsdelivr.net/gh/fatboy2020/img/images/v2ray.jpeg');"></span>
                     </a>
                     <div class="info gradient-effect">
                       <time datetime="2020-03-15">2020-03-15</time>
