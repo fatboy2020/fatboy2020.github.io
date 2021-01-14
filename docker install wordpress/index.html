@@ -1,0 +1,399 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>docker安装wordpress开启HTTPS | 学习过程</title>
+<meta name="description" content="希望自己能坚持" />
+<link rel="shortcut icon" href="https://fatboy2020.github.io/favicon.ico">
+<link rel="stylesheet" href="https://fatboy2020.github.io/styles/main.css">
+
+<script src="https://fatboy2020.github.io/media/js/jquery.min.js"></script>
+<script src="https://fatboy2020.github.io/media/js/masonry.pkgd.min.js"></script>
+<script src="https://fatboy2020.github.io/media/js/aos.js"></script>
+<script src="https://fatboy2020.github.io/media/js/pace.min.js"></script>
+<script src="https://fatboy2020.github.io/media/js/view-image.min.js"></script>
+<script src="https://fatboy2020.github.io/media/js/jquery.magnific-popup.min.js"></script>
+<script src="https://fatboy2020.github.io/media/js/functions.js"></script>
+    <meta name="referrer" content="never">
+    <meta name="description" content="用docker-compose 安装wordpress
+
+根据官方提供的模板，我们再结合你自己服务器的实际情况稍微修改就可以了.
+ 1version:&nbsp;'3.1' 2 3services: 4 5&nbsp;&nbsp;wordp..." />
+    <meta name="keywords" content="docker" />
+    <script src="https://fatboy2020.github.io/media/js/waterfall.min.js"></script>
+    <script src="https://fatboy2020.github.io/media/js/prism.min.js"></script>
+  </head>
+  <body>
+            <header id="header" class="grid-container">
+        <!-- start: .menu-wrapper -->
+        <div class="menu-mobile"> 
+          <i class="fa fa-reorder"></i>
+        </div>
+        <div class="menu-wrapper">
+          <div class="">
+            <div class="logo">
+              <a href="https://fatboy2020.github.io"><img src="\media\images\custom-headerLogo.png" alt=""></a>
+            </div>
+            <!-- start: .main-nav -->
+
+            <nav class="main-nav grid-container grid-parent">
+              <ul id="menu-header" class="menu gradient-effect">
+                <li class=""><a href="https://fatboy2020.github.io" class="menu">首页</a></li>
+                
+                  <li class="" >
+                    <a href="/" class="menu">
+                      首页
+                    </a>
+                  </li>
+                
+                  <li class="" >
+                    <a href="/archives" class="menu">
+                      归档
+                    </a>
+                  </li>
+                
+                  <li class="" >
+                    <a href="/tags" class="menu">
+                      标签
+                    </a>
+                  </li>
+                
+                  <li class="" >
+                    <a href="/post/about" class="menu">
+                      关于
+                    </a>
+                  </li>
+                
+                <li class="search-menu-item hide-on-mobile hide-on-tablet"><a href="#search-lightbox" class="lightbox mfp-inline"><i class="fa fa-search-line"></i></a></li>
+              </ul>
+            </nav>
+            <a href="#search-lightbox" class="lightbox epcl-search-button mfp-inline hide-on-tablet hide-on-desktop"><i class="fa fa-search-line"></i></a>
+            <!-- end: .main-nav -->
+            <div class="clear"></div>
+            <div class="border hide-on-tablet hide-on-mobile"></div>
+          </div>    
+          <div class="clear"></div>
+        </div>
+        <!-- end: .menu-wrapper -->
+        <div class="clear"></div>
+      </header>
+      <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
+        <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
+          <div class="search-wrapper section">
+            <form id="gridea-search-form" data-update="1610616467677" action="/search/index.html" class="search-form" _lpchecked="1">
+              <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
+              <button type="submit" class="submit" aria-label="Submit">
+                <i class="fa fa-search-line"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
+
+        <div class="center content">
+          <div class="featured-image cover" style="background-image: url('https://cdn.jsdelivr.net/gh/fatboy2020/img/images/20200330210651.png');">
+            <div class="meta top"> 
+              <time class="meta-info" style="float:left;" datetime="2020-03-30"><i class="fa fa-calendar"></i><span class="lately">9 个月前</span></time>
+              
+              <a href="https://fatboy2020.github.io/docker install wordpress/#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/docker install wordpress/"> </span>
+              </a>
+              <span id="/docker install wordpress/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+              
+            </div>
+            <div class="info">
+              <div class="tags ">
+                
+                      <a href="https://fatboy2020.github.io/32NyWNiIb/" class="ctag ctag-0 ctag-32NyWNiIb" aria-label="">docker</a>
+                    
+              </div>
+              <h1 class="title ularge white bold">docker安装wordpress开启HTTPS</h1>
+            </div>
+          </div>
+        </div>  
+
+        <div class="epcl-page-wrapper">
+          <div class="left-content grid-70 np-mobile">
+            <article class="main-article post">
+              <section class="post-content">
+                <div class="text">
+                  <div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif; background-image: linear-gradient(90deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(50, 0, 0, 0.05) 3%, rgba(0, 0, 0, 0) 3%); background-size: 20px 20px; background-position: center center;"><h2 id="hdockercomposewordpress" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.4em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">用docker-compose 安装wordpress</span></h2>
+<!-- more -->
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">根据<a href="https://hub.docker.com/_/wordpress" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; text-decoration: none; color: rgb(30, 107, 184); overflow-wrap: break-word;">官方提供的模板</a>，我们再结合你自己服务器的实际情况稍微修改就可以了.</p>
+<pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs bash" style="overflow-wrap: break-word; margin: 0px 2px; line-height: 15px; font-size: 11px; font-weight: normal; word-spacing: -3px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; overflow-x: auto; background: rgb(27, 24, 27); color: rgb(171, 155, 171); padding: 0.5em; white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important; display: -webkit-box !important;"><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 1</span>version:&nbsp;<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(145, 139, 59); word-wrap: inherit !important; word-break: inherit !important;">'3.1'</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 2</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 3</span>services:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 4</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 5</span>&nbsp;&nbsp;wordpress:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 6</span>&nbsp;&nbsp;&nbsp;&nbsp;image:&nbsp;wordpress<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 7</span>&nbsp;&nbsp;&nbsp;&nbsp;restart:&nbsp;always<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 8</span>&nbsp;&nbsp;&nbsp;&nbsp;ports:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 9</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;8080:80<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">10</span>&nbsp;&nbsp;&nbsp;&nbsp;environment:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">11</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WORDPRESS_DB_HOST:&nbsp;db<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">12</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WORDPRESS_DB_USER:&nbsp;wordpress<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WORDPRESS_DB_PASSWORD:&nbsp;mypassword<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">14</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WORDPRESS_DB_NAME:&nbsp;wordpress<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">15</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">16</span>&nbsp;&nbsp;db:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">17</span>&nbsp;&nbsp;&nbsp;&nbsp;image:&nbsp;mysql:5.7<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">18</span>&nbsp;&nbsp;&nbsp;&nbsp;restart:&nbsp;always<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">19</span>&nbsp;&nbsp;&nbsp;&nbsp;environment:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MYSQL_DATABASE:&nbsp;wordpress<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MYSQL_USER:&nbsp;wordpress<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MYSQL_PASSWORD:&nbsp;mypassword<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MYSQL_RANDOM_ROOT_PASSWORD:&nbsp;<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(145, 139, 59); word-wrap: inherit !important; word-break: inherit !important;">'1'</span><br></code></pre>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">我们需要将以上内容保存为 docker-compose.yml 文件，可以在<code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">/root/</code>文件夹下新建一个docker文件夹，存放各个应用的相关文件：</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"><code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">mkdir -p /root/docker/wordpress</code><br><code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">cd ~/docker/wordpress</code><br>之后通过 Vim 来创建 docker-compose.yml 文件并将上面的内容复制进去。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"><code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">vim docker-compose.yml</code><br>运行 Docker Compose 文件<br>在完成上述工作后，启动docker-compose.yml文件：</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"><code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">docker-compose up -d</code><br>如果没有报错，就可以正常启动，可通过docker ps查看各容器的运行情况：</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">完成 WordPress 的安装<br>容器正常运行后，在浏览器中输入<code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">http://服务器IP:8080即可打开</code> WordPress 主页，第一次打开需要进行安装：</p>
+<figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="https://cdn.jsdelivr.net/gh/fatboy2020/img/images/20200330202646.png" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure>
+<figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="https://cdn.jsdelivr.net/gh/fatboy2020/img/images/20200330202700.png" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure><br><figure style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><img src="https://cdn.jsdelivr.net/gh/fatboy2020/img/images/20200330202714.png" alt="" title="" style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; display: block; margin: 0px auto; max-width: 100%;"><figcaption style="line-height: inherit; margin: 0px; padding: 0px; margin-top: 10px; text-align: center; color: rgb(153, 153, 153); font-size: 0.7em;"></figcaption></figure>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">可以看到，通过这种方法安装，并不需要我们再手动配置数据库相关信息。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">至此，我们已经完成了 WordPress 的搭建，但是这还不够，我们还有下面这三个任务：</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">通过文件绑定或 Volume 来持久化存储容器中用户数据</p>
+<h3 id="h" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.3em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">配置端口转发</span></h3>
+<ul style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; padding-left: 32px; list-style-type: disc;">
+<li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; margin-bottom: 0.5em;"><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">配置 SSL 证书实现 HTTPS 访问<br>在本部分内容中，我们只完成第一个任务，至于配置端口转发以及 SSL 证书这个工作，我们将在完成下一部分另一种 WordPress 搭建方式之后统一进行。</p></li>
+<li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; margin-bottom: 0.5em;"><p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">持久化存储用户数据<br>官方所提供的 docker-compose 文件示例是非常基础的，虽然我们的应用已经正常运行，但应用运行过程中的用户数据我们并未使用 Volume 或者文件绑定的方式存储，所以我们需要对 docker-compose.yml 文件进行完善.<br>如果有需要持久化存储其他数据，可根据下面的内容自行修改 docker-compose.yml 文件添加。</p></li>
+</ul>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">本人是推荐直接使用 Volume 方式的，但考虑到可能有朋友需要方便修改 WordPress 主题部分文件之类的需求，同时也考虑到示例因素，本部分将为 wordpress 的网页目录提供两种存储方式，供各位参考，以下两种方式仍然是选择其中一种。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">只使用 Volume<br>修改 <code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">docker-compose.yml</code> 文件<br>使用vim修改docker-compose.yml内容，添加Volume相关信息，下面是示例，可自行与前文内容比较。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"><code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">
+version: '3.1'
+<p>services:</p>
+<p>wordpress:<br>
+image: wordpress<br>
+restart: always<br>
+ports:<br>
+- 8080:80<br>
+volumes:<br>
+- html:/var/www/html<br>
+environment:<br>
+WORDPRESS_DB_HOST: db<br>
+WORDPRESS_DB_USER: wordpress<br>
+WORDPRESS_DB_PASSWORD: mypassword<br>
+WORDPRESS_DB_NAME: wordpress</p>
+<p>db:<br>
+image: mysql:5.7<br>
+restart: always<br>
+volumes:<br>
+- db:/var/lib/mysql<br>
+environment:<br>
+MYSQL_DATABASE: wordpress<br>
+MYSQL_USER: wordpress<br>
+MYSQL_PASSWORD: mypassword<br>
+MYSQL_RANDOM_ROOT_PASSWORD: '1'<br>
+volumes:<br>
+html:<br>
+db:<br>
+</code>  <br>需要特别注意内容对齐</p></p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">重新运行 docker-compose.yml 文件<br>之后删除之前的容器后，重新运行 docker-compose.yml文件：</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"><code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">docker-compose up -d</code><br>如果没有报错就说明一切正常，访问http://服务器IP:8080即可开始安装 WordPress，由于数据已经通过Volume持久存储，现在可以在安装完成 WordPress 后，将容器全部删除，之后再次重新运行docker-compose.yml文件，你会发现之前所设置的一切都还在。</p>
+<h2 id="hvolume" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.4em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">同时使用 Volume 和文件绑定</span></h2>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">使用文件绑定的方式是将宿主机中已存在的文件内容挂载到容器中，文件映射的方向是由宿主机到容器，为了保证容器能够正常运行，我们需要将容器中要绑定的文件内容复制到宿主机中。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">运行临时 WordPress 容器以复制网页目录内容<br>由于之前的容器已经进行了安装，我们删除之前的容器，并重新运行 docker-compose.yml 文件</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"><code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">docker-compose up -d</code><br>之后我们通过docker cp命令将容器内的<code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">/var/www/html</code>复制为宿主机的<code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">/root/docker/wordpress/html</code>：</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"><code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">cd ~/docker/wordpress  #</code>如果未建立该文件夹自行mkdir创建<br><code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">docker cp  wordpress_wordpress_1:/var/www/html .   #注意最后的.表示当前目录</code><br>命令完成后可通过ls命令确认已经复制成功。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">修改 docker-compose.yml 文件<br>同样使用vim修改docker-compose.yml内容，添加卷和文件绑定相关信息，下面是示例，可自行与前文内容比较。</p>
+<pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs javascript" style="overflow-wrap: break-word; margin: 0px 2px; line-height: 15px; font-size: 11px; font-weight: normal; word-spacing: -3px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; overflow-x: auto; background: rgb(27, 24, 27); color: rgb(171, 155, 171); padding: 0.5em; white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important; display: -webkit-box !important;"><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 1</span>version:&nbsp;<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(145, 139, 59); word-wrap: inherit !important; word-break: inherit !important;">'3.1'</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 2</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 3</span>services:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 4</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 5</span>&nbsp;&nbsp;wordpress:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 6</span>&nbsp;&nbsp;&nbsp;&nbsp;image:&nbsp;wordpress<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 7</span>&nbsp;&nbsp;&nbsp;&nbsp;restart:&nbsp;always<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 8</span>&nbsp;&nbsp;&nbsp;&nbsp;ports:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 9</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); word-wrap: inherit !important; word-break: inherit !important;">8080</span>:<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); word-wrap: inherit !important; word-break: inherit !important;">80</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">10</span>&nbsp;&nbsp;&nbsp;&nbsp;volumes:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">11</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;~<span class="hljs-regexp" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(202, 64, 43); word-wrap: inherit !important; word-break: inherit !important;">/docker/</span>wordpress/html:<span class="hljs-regexp" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(202, 64, 43); word-wrap: inherit !important; word-break: inherit !important;">/var/</span>www/html&nbsp;&nbsp;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">12</span>&nbsp;&nbsp;&nbsp;&nbsp;environment:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WORDPRESS_DB_HOST:&nbsp;db<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">14</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WORDPRESS_DB_USER:&nbsp;wordpress<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WORDPRESS_DB_PASSWORD:&nbsp;mypassword<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WORDPRESS_DB_NAME:&nbsp;wordpress<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">17</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">18</span>&nbsp;&nbsp;db:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">19</span>&nbsp;&nbsp;&nbsp;&nbsp;image:&nbsp;mysql:<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); word-wrap: inherit !important; word-break: inherit !important;">5.7</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">20</span>&nbsp;&nbsp;&nbsp;&nbsp;restart:&nbsp;always<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">21</span>&nbsp;&nbsp;&nbsp;&nbsp;volumes:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;db:<span class="hljs-regexp" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(202, 64, 43); word-wrap: inherit !important; word-break: inherit !important;">/var/</span>lib/mysql<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">23</span>&nbsp;&nbsp;&nbsp;&nbsp;environment:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">24</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MYSQL_DATABASE:&nbsp;wordpress<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">25</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MYSQL_USER:&nbsp;wordpress<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">26</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MYSQL_PASSWORD:&nbsp;mypassword<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">27</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MYSQL_RANDOM_ROOT_PASSWORD:&nbsp;<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(145, 139, 59); word-wrap: inherit !important; word-break: inherit !important;">'1'</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">28</span>volumes:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">29</span>&nbsp;&nbsp;html:<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">30</span>&nbsp;&nbsp;db:&nbsp;&nbsp;&nbsp;<br></code></pre>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"><br>重新运行 docker-compose.yml 文件<br>之后删除之前的容器后，重新运行 docker-compose.yml文件：</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"><code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">docker-compose up -d</code><br>如果没有报错就说明一切正常，访问http://服务器IP:8080即可开始安装 WordPress，由于数据已经持久存储，现在可以在安装完成 WordPress 后，将容器全部删除，之后再次重新运行docker-compose.yml文件，你会发现之前所设置的一切都还在。</p>
+<h2 id="hssl" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.4em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">SSL 证书以及端口转发配置</span></h2>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">看到这里的朋友应该都已经完成了搭建，目前我们已经可以通过http://服务器IP:8080这一地址访问网站了，但这显然无法满足真正的需求，我们要实现的是通过https://www.yourdomain.com之类的域名进行访问，本部分将简单说明实现方法。</p>
+<h2 id="hssl-1" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.4em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">SSL 证书申请</span></h2>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">可以在阿里云，腾讯云，申请免费的一年SSL证书，这里就不详细讲了<br>推荐看这位大佬写的<a href="https://www.pbeta.me/docker-nextcloud-ssl/#ssl" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; text-decoration: none; color: rgb(30, 107, 184); overflow-wrap: break-word;">博客</a></p>
+<h2 id="hweb" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.4em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">Web服务器安装</span></h2>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">进行端口转发需要安装 Web 服务器，这里我们使用 Nginx，如果你未安装，我推荐你使用 Docker 快速搭建一个，</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">需要注意的是我们需要增加 SSL 证书文件夹的绑定：<br>这里首先新建一个docker nginx<br>把默认配置复制到宿主机里<br><code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">docker run -d -P nginx</code><br>然后把<code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">docker ps</code>看一下ID<br>新建宿主机存nginx配置文件的文件夹，就放在前面设置的docker文件夹里面<br><code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">docker cp nginx-name:/etc/nginx /root/docker</code><br>这里在复制之前先进docker nginx的shell就在/etc/nginx新建一个cert的文件夹<br>这样后面放证书的时候就不用瞎折腾</p>
+<pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs diff" style="overflow-wrap: break-word; margin: 0px 2px; line-height: 15px; font-size: 11px; font-weight: normal; word-spacing: -3px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; overflow-x: auto; background: rgb(27, 24, 27); color: rgb(171, 155, 171); padding: 0.5em; white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important; display: -webkit-box !important;"><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">1</span>docker&nbsp;run&nbsp;-d&nbsp;--name&nbsp;nginx&nbsp;\<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">2</span><span class="hljs-deletion" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important;">-v&nbsp;/root/docker/nginx:/etc/nginx&nbsp;\</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">3</span><span class="hljs-deletion" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important;">-v&nbsp;/root/wwwroot:/usr/share/nginx/html&nbsp;\</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">4</span><span class="hljs-deletion" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important;">-v&nbsp;/etc/letsencrypt:/etc/letsencrypt&nbsp;\&nbsp;#另一位大佬的方法</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">5</span><span class="hljs-deletion" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important;">-v&nbsp;/root/docker/nginx/cert:&nbsp;/etc/nginx/cert&nbsp;#如果按我说的方法做（二选一）</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">6</span><span class="hljs-deletion" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important;">-p&nbsp;80:80&nbsp;\</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">7</span><span class="hljs-deletion" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important;">-p&nbsp;443:443&nbsp;\</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">8</span>nginx<br></code></pre>
+<h2 id="hssl-2" style="color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px; font-weight: bold; font-size: 1.4em;"><span style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;">配置 SSL 证书和端口转发</span></h2>
+<ul style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; padding-left: 32px; list-style-type: disc;">
+<li style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; margin-bottom: 0.5em;">配置 Nginx<br>在这里我们假设你使用了Certbot来申请证书，证书位置为默认的/etc/letsencrypt/下，并将其与 Nginx 容器相同目录进行了绑定</li>
+</ul>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">在 Nginx 配置目录下添加 yourdomain.com.conf文件，参考配置如下：</p>
+<pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs php" style="overflow-wrap: break-word; margin: 0px 2px; line-height: 15px; font-size: 11px; font-weight: normal; word-spacing: -3px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; overflow-x: auto; background: rgb(27, 24, 27); color: rgb(171, 155, 171); padding: 0.5em; white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important; display: -webkit-box !important;"><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 1</span>server&nbsp;{<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 2</span>&nbsp;&nbsp;&nbsp;&nbsp;listen&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); word-wrap: inherit !important; word-break: inherit !important;">80</span>;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 3</span>&nbsp;&nbsp;&nbsp;&nbsp;server_name&nbsp;liangxiaorui.com&nbsp;www.liangxiaorui.com;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 4</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(123, 89, 192); word-wrap: inherit !important; word-break: inherit !important;">return</span>&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); word-wrap: inherit !important; word-break: inherit !important;">301</span>&nbsp;&nbsp;https:<span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(158, 143, 158); word-wrap: inherit !important; word-break: inherit !important;">//$server_name$request_uri;</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 5</span>}<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 6</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 7</span>server&nbsp;{<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 8</span>&nbsp;&nbsp;listen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); word-wrap: inherit !important; word-break: inherit !important;">443</span>&nbsp;ssl;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;"> 9</span>&nbsp;&nbsp;server_name&nbsp;liangxiaorui.com&nbsp;www.liangxiaorui.com;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">10</span>&nbsp;&nbsp;ssl_certificate&nbsp;/path/to/cert.pem;&nbsp;<span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(158, 143, 158); word-wrap: inherit !important; word-break: inherit !important;">//证书文件</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">11</span>&nbsp;&nbsp;ssl_certificate_key&nbsp;/path/to/key.pem;<span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(158, 143, 158); word-wrap: inherit !important; word-break: inherit !important;">//证书文件</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">12</span>&nbsp;&nbsp;keepalive_timeout&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); word-wrap: inherit !important; word-break: inherit !important;">70</span>;&nbsp;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">13</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">14</span>&nbsp;&nbsp;error_log&nbsp;/<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(123, 89, 192); word-wrap: inherit !important; word-break: inherit !important;">var</span>/log/nginx/liangxiaorui.com.log&nbsp;error;&nbsp;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">15</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">16</span>&nbsp;&nbsp;location&nbsp;&nbsp;/&nbsp;{<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_redirect&nbsp;off;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">18</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header&nbsp;Host&nbsp;$host;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">19</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header&nbsp;X-Forwarded-Server&nbsp;$host;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">20</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header&nbsp;X-Real-IP&nbsp;$remote_addr;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">21</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header&nbsp;X-Forwarded-<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(123, 89, 192); word-wrap: inherit !important; word-break: inherit !important;">For</span>&nbsp;$proxy_add_x_forwarded_for;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">22</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_set_header&nbsp;X-Forwarded-Proto&nbsp;$scheme;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">23</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proxy_pass&nbsp;http:<span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(158, 143, 158); word-wrap: inherit !important; word-break: inherit !important;">//服务器ip:8081;&nbsp;</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">24</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">25</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">26</span>&nbsp;&nbsp;&nbsp;&nbsp;error_page&nbsp;&nbsp;&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); word-wrap: inherit !important; word-break: inherit !important;">500</span>&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); word-wrap: inherit !important; word-break: inherit !important;">502</span>&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); word-wrap: inherit !important; word-break: inherit !important;">503</span>&nbsp;<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); word-wrap: inherit !important; word-break: inherit !important;">504</span>&nbsp;&nbsp;/<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); word-wrap: inherit !important; word-break: inherit !important;">50</span>x.html;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">27</span>&nbsp;&nbsp;&nbsp;&nbsp;location&nbsp;=&nbsp;/<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); word-wrap: inherit !important; word-break: inherit !important;">50</span>x.html&nbsp;{<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">28</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;root&nbsp;&nbsp;&nbsp;/usr/share/nginx/html;<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">29</span>&nbsp;&nbsp;&nbsp;&nbsp;}<br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">30</span><br><span class="linenum hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(166, 89, 38); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">31</span>}<br></code></pre>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">需要注意的是，其中proxy_set_header X-Forwarded-Proto $scheme很关键，这是避免内部apache和外部nginx之间通信导致异常。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;">保存文件后，重启 Nginx 容器即可。</p>
+<p style="font-size: inherit; color: inherit; line-height: inherit; padding: 0px; margin: 1.5em 0px;"><code style="font-size: inherit; line-height: inherit; overflow-wrap: break-word; padding: 2px 4px; border-radius: 4px; margin: 0px 2px; color: rgb(233, 105, 0); background: rgb(248, 248, 248);">docker restart nginx</code><br>此时就能够用域名访问博客了。</p></div>
+                </div>
+                <div class="clear"></div>
+              </section>
+            </article>
+            <div class="clear"></div>
+
+            <section class="related section">
+              
+              
+              <article class="next grid-50 tablet-grid-50 grid-parent">
+                <div class="thumb cover lazy loaded" style="background-image: url('https://fatboy2020.github.io/post-images/FbH6RxYv9.jpg');"></div>
+                 <a href="https://fatboy2020.github.io/FbH6RxYv9/" class="full-link"></a>
+                 <div class="info">
+                  <time datetime="2020-03-25">2020-03-25</time>
+                  <h4 class="title white no-margin">西班牙衰落史（上）</h4>
+                </div>
+                 <span class="epcl-button red">
+                  <img src="https://fatboy2020.github.io/media/images/right-arrow.svg" width="15" alt="Left Arrow">
+                </span>
+                <div class="overlay"></div>
+              </article>
+              
+
+                <div class="clear"></div>
+            </section>
+
+              <div class="clear"></div>
+              
+            
+              <div id="comments" class="bg-white hosted ">
+                
+                  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+<div class="clear"></div>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '73012313a3eb9500b2d7',
+    clientSecret: '03dac25f6251ca31d37881040ced1ca560687688',
+    repo: 'fatboy2020.github.io',
+    owner: 'fatboy2020',
+    admin: ['fatboy2020'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+                
+                
+              </div>
+            
+
+            </div>
+          </div>
+      </main>
+
+          <footer id="footer" class="grid-container">
+        <div class="widgets row gradient-effect">
+            <div class="default-sidebar border-effect">
+              <div class="grid-33 tablet-grid-50 mobile-grid-100">
+                <section id="tag_cloud-2" class="widget widget_epcl_posts_thumbs underline-effect">
+                  <h4 class="widget-title title white bordered">最新文章</h4>
+                  
+                  
+                  <article class="item post-0 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://fatboy2020.github.io/docker install wordpress/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('https://cdn.jsdelivr.net/gh/fatboy2020/img/images/20200330210651.png');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2020-03-30">2020-03-30</time>
+                      <h4 class="title usmall">
+                        <a href="https://fatboy2020.github.io/docker install wordpress/">docker安装wordpress开启HTTPS</a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  <article class="item post-1 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://fatboy2020.github.io/FbH6RxYv9/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('https://fatboy2020.github.io/post-images/FbH6RxYv9.jpg');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2020-03-25">2020-03-25</time>
+                      <h4 class="title usmall">
+                        <a href="https://fatboy2020.github.io/FbH6RxYv9/">西班牙衰落史（上）</a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://fatboy2020.github.io/englisgpaperdownload/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('https://cdn.jsdelivr.net/gh/fatboy2020/img/images/图标.jpg');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2020-03-18">2020-03-18</time>
+                      <h4 class="title usmall">
+                        <a href="https://fatboy2020.github.io/englisgpaperdownload/">怎么免费下载英文文献并翻译  </a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <div class="clear"></div>
+                </section>
+              </div>
+
+              <div class="grid-33 tablet-grid-50 mobile-grid-100">
+                <section id="tag_cloud-2" class="widget widget_tag_cloud underline-effect">
+                  <h4 class="widget-title title white bordered">标签云</h4>
+                  <div class="tagcloud">
+                    
+                      <a href="https://fatboy2020.github.io/32NyWNiIb/" class="ctag ctag-0 ctag-32NyWNiIb" aria-label="">docker</a>
+                    
+                      <a href="https://fatboy2020.github.io/S3Lm5s7hL/" class="ctag ctag-1 ctag-S3Lm5s7hL" aria-label="">论文</a>
+                    
+                      <a href="https://fatboy2020.github.io/btpanle/" class="ctag ctag-2 ctag-btpanle" aria-label="">宝塔面板相关教程</a>
+                    
+                      <a href="https://fatboy2020.github.io/9O1woIOyI/" class="ctag ctag-3 ctag-9O1woIOyI" aria-label="">github</a>
+                    
+                      <a href="https://fatboy2020.github.io/ndZPiQ3bL/" class="ctag ctag-4 ctag-ndZPiQ3bL" aria-label="">Gridea</a>
+                    
+                  </div>
+                  <div class="clear"></div>
+                </section>
+              </div>
+
+              <div class="grid-33 tablet-grid-50 mobile-grid-100">
+                <section id="epcl_about-2" class="widget widget_epcl_about underline-effect">
+                  <h4 class="widget-title title white bordered">关于我</h4>
+                  <div class="avatar">
+                    <a href="" class="translate-effect thumb"><span class="fullimage cover" style="background-image: url(https://fatboy2020.github.io/images/avatar.png);"></span></a>
+                  </div>
+                  <div class="info">
+                    <h4 class="title small author-name gradient-effect no-margin"><a href="">学习过程</a></h4>
+                    <p class="founder">希望自己能坚持</p>
+                    <div class="social">
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </div> 
+                  </div>
+                  <div class="clear"></div>
+                  </section>
+              </div>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="logo">
+          <a href="https://fatboy2020.github.io"><img src="\media\images\custom-footerLogo.png" alt=""></a>
+        </div>
+        <p class="published border-effect">
+          ©2019 共 7 篇文章
+          <br/>
+          Theme <a href="https://gridea.dev/" target="_blank">「breek」</a> Powered by <a href="https://gridea.dev/" target="_blank">「Gridea」</a>
+        </p>
+        
+        <a href="javascript:void(0)" id="back-to-top" class="epcl-button dark" style="display:none">
+          <i class="fa fa-arrow"></i>
+        </a>
+    </footer>
+    
+    <div class="clear"></div>
+
+        
+
+      
+    <script src="https://fatboy2020.github.io/media/js/functions-post.js"></script>
+
+    </div>
+    <!-- end: #wrapper -->
+  </body>
+</html>
